@@ -15,4 +15,4 @@ spec:
           service:
             name: argocd-myapp-internal-service
             port:
-              number: 8080
+              number: 80
