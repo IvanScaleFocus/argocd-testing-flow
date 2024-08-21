@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: nginx
+        image: petyrveliki/petar-custom-nginx
         ports:
         - containerPort: 80
