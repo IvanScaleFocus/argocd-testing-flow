@@ -8,7 +8,7 @@ spec:
   - host: nginx-from-argocd.com
     http:
       paths:
-      - path: /a
+      - path: /
         pathType: Prefix
         backend:
           service:
