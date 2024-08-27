@@ -17,6 +17,9 @@ spec:
         image: petyrveliki/petar-custom-nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: my-pv
+          mountPath: /usr/share/nginx/html
       volumes:
       - name: my-pv
         persistentVolumeClaim:
