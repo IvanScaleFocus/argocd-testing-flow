@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-example
+  name: pv-example2
 spec:
   capacity:
     storage: 10Mi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/"
+    path: "/mnt/test"
