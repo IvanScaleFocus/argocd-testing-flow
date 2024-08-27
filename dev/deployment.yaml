@@ -17,3 +17,7 @@ spec:
         image: petyrveliki/petar-custom-nginx
         ports:
         - containerPort: 80
+      volumes:
+      - name: my-pv
+        persistentVolumeClaim:
+          claimName: pvc-example
