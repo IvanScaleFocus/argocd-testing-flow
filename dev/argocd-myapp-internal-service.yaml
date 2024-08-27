@@ -9,3 +9,7 @@ spec:
    - port: 80
   selector:
     app: myapp
+  volumes:
+  - name: my-pv
+    persistentVolumeClaim:
+      claimName: pvc-example
