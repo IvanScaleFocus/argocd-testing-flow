@@ -17,3 +17,13 @@ spec:
         image: petyrveliki/petar-custom-nginx
         ports:
         - containerPort: 80
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: my-pv
+          mountPath: /usr/share/nginx/html
+      securityContext: {}
+      volumes:
+      - name: my-pv
+        persistentVolumeClaim:
+          claimName: pvc-example
