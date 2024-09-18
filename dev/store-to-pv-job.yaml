@@ -17,6 +17,9 @@ spec:
         volumeMounts:
         - name: storage
           mountPath: /mnt/data  # Mount point for the PV inside this container - the cURL one
+      securityContext:
+        runAsUser: 0  # Run as root
+        runAsGroup: 0  # Root group
       restartPolicy: Never
       volumes:
       - name: storage
