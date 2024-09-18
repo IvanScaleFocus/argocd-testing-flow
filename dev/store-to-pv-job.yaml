@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: fetch-file-job
 spec:
-  backoffLimit: 4
+  backoffLimit: 3  # Retry the job if it fails, up to 3 times
   template:
     spec:
       containers:
@@ -13,10 +13,10 @@ spec:
         args:
           - "-c"
           - |
-            curl -o /mnt/data/fox.jpg https://i.pinimg.com/originals/67/f9/2e/67f92e258297942f00aab9f31706e353.jpg && echo "Fox image file downloaded to PV."
+            curl -f -o /mnt/data/fox.jpg https://i.pinimg.com/originals/67/f9/2e/67f92e258297942f00aab9f31706e353.jpg && echo "Fox image file downloaded to PV." || echo "Download failed."
         volumeMounts:
         - name: storage
-          mountPath: /mnt/data  # Mount point for the PV inside this container - the cURL one ..
+          mountPath: /mnt/data  # Mount point for the PV inside this container - the cURL one
       restartPolicy: Never
       volumes:
       - name: storage
