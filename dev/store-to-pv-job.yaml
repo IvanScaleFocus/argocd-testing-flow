@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fetch-file-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: fetch-file-container
+        image: curlimages/curl:7.78.0  # Using a minimal curl image
+        command: ["/bin/sh"]
+        args:
+          - "-c"
+          - |
+            curl -o /mnt/data/bear.200.300.jpg https://placebear.com/200/300 && echo "Bear image file downloaded to PV."
+        volumeMounts:
+        - name: storage
+          mountPath: /mnt/data  # Mount point for the PV inside this container - the cURL one ..
+      restartPolicy: Never
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: pvc-example
+
+# IMPORTANT !!!
+#
+# /mnt/data is where we'll mount the PV inside the cURL container ..
+# In the NginX POD the same PV is mounted in /usr/share/nginx/html - so NginX uses it as Docroot ..
+# In the K8s POD itself - the PV is available under /mnt/test ..
