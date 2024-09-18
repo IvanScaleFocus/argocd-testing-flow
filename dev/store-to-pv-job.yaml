@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: fetch-file-job
 spec:
+  backoffLimit: 4
   template:
     spec:
       containers:
@@ -21,9 +22,3 @@ spec:
       - name: storage
         persistentVolumeClaim:
           claimName: pvc-example
-
-# IMPORTANT !!!
-#
-# /mnt/data is where we'll mount the PV inside the cURL container ..
-# In the NginX POD the same PV is mounted in /usr/share/nginx/html - so NginX uses it as Docroot ..
-# In the K8s POD itself - the PV is available under /mnt/test ..
