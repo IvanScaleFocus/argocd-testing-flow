@@ -12,7 +12,7 @@ spec:
         args:
           - "-c"
           - |
-            curl -o /mnt/data/bear.200.300.jpg https://placebear.com/200/300 && echo "Bear image file downloaded to PV."
+            curl -o /mnt/data/fox.jpg https://i.pinimg.com/originals/67/f9/2e/67f92e258297942f00aab9f31706e353.jpg && echo "Fox image file downloaded to PV."
         volumeMounts:
         - name: storage
           mountPath: /mnt/data  # Mount point for the PV inside this container - the cURL one ..
