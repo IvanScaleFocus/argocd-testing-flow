@@ -14,7 +14,7 @@ spec:
           - |
             apk add --no-cache curl && \
             # Download the tar.gz file
-            curl -o /mnt/data/file.tar.gz https://repo.latitc.corp-apps.com/repository/maven-int-latitc/internal/poker/html5/poker-game-common/2.466-ac62b8650/poker-game-common-2.466-ac62b8650-distribution.tar.gz && \
+            curl -o /mnt/data/file.tar.gz http://localhost:8081/poker-game-common-2.466-ac62b8650-distribution.tar.gz && \
             # Extract the tar.gz file to the PV location
             tar -xzf /mnt/data/file.tar.gz -C /mnt/data && \
             echo "File downloaded and extracted"
