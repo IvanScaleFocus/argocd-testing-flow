@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fetch-and-extract-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: fetch-and-extract-container
+        image: alpine:latest  # Using Alpine which is light & includes tar & curl
+        command: ["/bin/sh"]
+        args:
+          - "-c"
+          - |
+            apk add --no-cache curl && \
+            # Download the tar.gz file
+            curl -o /mnt/data/file.tar.gz https://repo.latitc.corp-apps.com/repository/maven-int-latitc/internal/poker/html5/poker-game-common/2.466-ac62b8650/poker-game-common-2.466-ac62b8650-distribution.tar.gz && \
+            # Extract the tar.gz file to the PV location
+            tar -xzf /mnt/data/file.tar.gz -C /mnt/data && \
+            echo "File downloaded and extracted"
+        volumeMounts:
+        - name: storage
+          mountPath: /mnt/data  # Mount point for the PV inside the cURL container
+      securityContext:
+        runAsUser: 0  # Run as root
+        runAsGroup: 0  # Root group
+      restartPolicy: Never
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: pv-example
+
