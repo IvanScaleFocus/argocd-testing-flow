@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: docker-copy-assets-to-pv-job
+spec:
+  backoffLimit: 3  # Retry the job if it fails, up to 3 times
+  template:
+    spec:
+      containers:
+      - name: docker-copy-assets-to-pv-container
+        image: petyrveliki/petar-copy-static-assets-to-pv
+        command: ["/bin/sh"]
+        args:
+          - "/app/copy-assets-to-pv-script.sh"
+        volumeMounts:
+        - name: storage
+          mountPath: /mnt/test  # Mount point for the PV inside this container - the Docker based one
+      securityContext:
+        runAsUser: 0  # Run as root
+        runAsGroup: 0  # Root group
+      restartPolicy: Never
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: pvc-example
