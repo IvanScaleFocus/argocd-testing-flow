@@ -9,6 +9,9 @@ spec:
       containers:
       - name: docker-copy-assets-to-pv-container
         image: petyrveliki/petar-copy-static-assets-to-pv
+        env:
+        - name: ASSETS_VERSION
+          value: "v.1.2.3"
         command: ["/bin/sh"]
         args:
           - "/app/copy-assets-to-pv-script.sh"
