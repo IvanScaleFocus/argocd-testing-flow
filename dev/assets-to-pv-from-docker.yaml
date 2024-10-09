@@ -11,7 +11,7 @@ spec:
         image: ivantws23/inst-win
         env:
         - name: ASSETS_VERSION
-          value: "v.1.2.3"
+          value: "v.1.2.4"
         command: ["/bin/sh"]
         args:
           - "/app/copy-assets-to-pv-script.sh"
