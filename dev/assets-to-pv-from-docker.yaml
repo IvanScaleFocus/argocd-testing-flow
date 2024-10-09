@@ -9,6 +9,7 @@ spec:
       containers:
       - name: docker-copy-assets-to-pv-container
         image: ivantws23/inst-win
+        imagePullPolicy: Always
         env:
         - name: ASSETS_VERSION
           value: "v.1.2.4"
