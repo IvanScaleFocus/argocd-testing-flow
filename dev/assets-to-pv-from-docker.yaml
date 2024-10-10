@@ -18,7 +18,7 @@ spec:
           - "/app/copy-assets-to-pv-script.sh"
         volumeMounts:
         - name: storage
-          mountPath: /mnt/test  # Mount point for the PV inside this container - the Docker based one
+          mountPath: /mnt/nginxRoot/  # Mount point for the PV inside this container - the Docker based one
       securityContext:
         runAsUser: 0  # Run as root
         runAsGroup: 0  # Root group
