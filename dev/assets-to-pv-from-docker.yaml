@@ -14,6 +14,6 @@ spec:
         image: ivantws23/inst-win
         env:
         - name: ASSETS_VERSION
-          value: "v.1.2.3.4"
+          value: "v.1.2.3"
         command: ["sh", "-c", "echo 'test done'"]
       restartPolicy: Never
