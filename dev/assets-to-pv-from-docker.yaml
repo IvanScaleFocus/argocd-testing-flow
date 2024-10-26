@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: docker-copy-assets-to-pv-container
-        image: petyrveliki/petar-copy-static-assets-to-pv
+        image: ivantws23/inst-win
         env:
         - name: ASSETS_VERSION
           value: "v.1.2.3"

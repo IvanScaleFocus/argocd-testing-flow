@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: fetch-file-job
 spec:
-  backoffLimit: 3  # Retry the job if it fails, up to 3 times
+  backoffLimit: 1  # Retry the job if it fails, up to 3 times
   template:
     spec:
       containers:
