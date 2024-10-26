@@ -12,9 +12,7 @@ spec:
         env:
         - name: ASSETS_VERSION
           value: "v.1.2.3"
-        command: ["/bin/sh"]
-        args:
-          - "echo test complete"
+        command: ["sh", "-c", "echo 'test done'"]
       securityContext:
         runAsUser: 0  # Run as root
         runAsGroup: 0  # Root group
