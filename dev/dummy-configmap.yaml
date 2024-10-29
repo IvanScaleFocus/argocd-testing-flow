@@ -1,6 +1,5 @@
+# This is a dummy config map in order to have something to sync for the job hook to work
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: dummy-config-map
-data:
-  dummyData: "dummyValue"
